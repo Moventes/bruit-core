@@ -8,7 +8,7 @@ module.exports = {
     context: ROOT,
 
     entry: {
-        'bruit': './core.ts'
+        'core': './start.ts'
     },
 
     output: {

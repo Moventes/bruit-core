@@ -1,12 +1,15 @@
 {
   "name": "@bruit/core",
-  "version": "0.0.2-plop",
+  "version": "2.0.1-plop",
   "description": "bruit.io core library",
   "main": "./lib/core.js",
   "private": false,
   "types": "./lib/core.d.ts",
   "scripts": {
-    "build": "webpack --config webpack.config.js --mode production"
+    "prebuild": "node config/set_config.js prod",
+    "build": "webpack --config webpack.config.js --mode production",
+    "prepublishOnly": "npm i && npm run build && node script/git-tag",
+    "postpublish": "node script/log-update-db.js"
   },
   "keywords": [
     "bruit",
@@ -15,7 +18,7 @@
   "author": "moventes",
   "license": "ISC",
   "dependencies": {
-    "@bruit/types": "0.3.2-1",
+    "@bruit/types": "0.3.2-2",
     "bowser": "^2.5.2",
     "html2canvas": "^1.0.0-rc.3",
     "lz-string": "^1.4.4"
@@ -35,6 +38,8 @@
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
     "@babel/preset-env": "^7.4.1",
-    "@babel/preset-typescript": "^7.3.3"
+    "@babel/preset-typescript": "^7.3.3",
+    "chalk": "^2.4.2",
+    "edit-json-file": "^1.2.1"
   }
 }
