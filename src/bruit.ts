@@ -1,4 +1,4 @@
-import { BrtCoreConfig, BrtData } from '@bruit/types';
+import { BrtCoreConfig, BrtData, BrtField } from '@bruit/types';
 import { BrtScreenshot } from '@bruit/types/dist/interfaces/brt-screenshot';
 import { Feedback } from './api/feedback';
 import { ConsoleTool } from './bruit-tools/console';
@@ -13,6 +13,9 @@ export class Bruit {
             const bruitCoreConfig = new BruitCoreConfig(config);
             Bruit.config = bruitCoreConfig;
             ConsoleTool.init(Bruit.config.log);
+            if (window) {
+                (window as any).Bruit = Bruit;
+            }
         } else {
             console.error('BRUIT.IO ERROR :', errors);
             throw new Error('BRUIT.IO ERROR :' + JSON.stringify(errors));
@@ -40,6 +43,11 @@ export class Bruit {
         }
 
         return feedback.send(fields, data, dataFn, screenshotConfig);
+    }
+
+    public static sendFeedbackFromModal(formFields: BrtField[], data: BrtData[] = [], dataFn?: () => BrtData[] | Promise<BrtData[]>, screenshotConfig?: BrtScreenshot) {
+        var feedback = new Feedback(Bruit.config);
+        return feedback.send(formFields, data, dataFn, screenshotConfig);
     }
 
     public static sendError(error: string) {

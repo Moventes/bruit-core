@@ -1,10 +1,11 @@
 {
   "name": "@bruit/core",
-  "version": "2.0.1-plop",
+  "version": "2.0.3-plop",
   "description": "bruit.io core library",
   "main": "./lib/core.js",
   "private": false,
-  "types": "./lib/core.d.ts",
+  "types": "./lib/bruit.d.ts",
+  "mainDir": "./lib/",
   "scripts": {
     "prebuild": "node config/set_config.js prod",
     "build": "webpack --config webpack.config.js --mode production",

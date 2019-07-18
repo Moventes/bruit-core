@@ -34,7 +34,7 @@ export class BruitCoreConfig implements BrtCoreConfig {
 
   static haveError(config: BrtCoreConfig): BrtError | void {
     if (config) {
-      if (config.log.logCacheLength) {
+      if (config.log && config.log.logCacheLength) {
         if (!Object.keys(config.log.logCacheLength).every(v => config.log.logCacheLength[v] >= 0)) {
           return {
             code: 101,

@@ -40,7 +40,7 @@ if (document && document.getElementsByTagName) {
                         if (!params.log) {
                             params.log = {};
                         }
-                        params.log.logCacheLength = JSON.parse(kv[1]);
+                        params.log.logCacheLength = JSON.parse(decodeURI(kv[1]));
                         break;
                     case 'log.addQueryParamsToLog':
                         if (!params.log) {
