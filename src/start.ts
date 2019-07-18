@@ -1,6 +1,9 @@
 import { BrtCoreConfig } from '@bruit/types';
 import { Bruit } from './bruit';
 
+export { Bruit } from './bruit';
+
+
 if (document && document.getElementsByTagName) {
     // Find all script tags
     const scripts = document.getElementsByTagName('script');

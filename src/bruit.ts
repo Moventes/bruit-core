@@ -3,6 +3,7 @@ import { BrtScreenshot } from '@bruit/types/dist/interfaces/brt-screenshot';
 import { Feedback } from './api/feedback';
 import { ConsoleTool } from './bruit-tools/console';
 import { BruitCoreConfig } from './models/bruit-core-config.class';
+
 export class Bruit {
 
     private static config: BruitCoreConfig;
