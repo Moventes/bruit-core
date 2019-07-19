@@ -19,7 +19,7 @@ export class HttpTool {
         const url = arguments[1];
         HttpTool.logCall(method, url);
 
-        this._oldonreadystatechange = this.onreadystatechange;
+        var _oldonreadystatechange = this.onreadystatechange;
         this.onreadystatechange = function (e: any) {
           if (this.readyState === 2 && !JSON.stringify(this.status).startsWith('2')) {
             HttpTool.logResponseHeaders(method, e.target.responseURL, e.target.status);
@@ -27,8 +27,8 @@ export class HttpTool {
           if (this.readyState === 4) {
             HttpTool.logResponse(method, e.target.responseURL, e.target.status, e.target.responseText);
           }
-          if (this._oldonreadystatechange) {
-            this._oldonreadystatechange.apply(arguments);
+          if (_oldonreadystatechange) {
+            _oldonreadystatechange.apply(arguments);
           }
         };
         open.apply(this, arguments);

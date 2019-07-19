@@ -46,35 +46,4 @@ export class Api {
     });
   }
 
-  // static postFeedback(feedback: BrtFeedback): Promise<any> {
-  //   return fetch(ComponentConfig.BRUIT_IO_API_URL, {
-  //     method: 'POST',
-  //     body: JSON.stringify(feedback),
-  //     headers: new Headers({ 'Content-Type': 'text/plain' })
-  //   })
-  //   .then(response => Api.handleErrors(response))
-  //   .then(() => {
-  //     // var contentType = response.headers.get('content-type');
-  //     // if (contentType && contentType.indexOf('application/json') !== -1) {
-  //     //   return response.json();
-  //     // } else {
-  //     //   return;
-  //     // }
-  //     return;
-  //   });
-
-  // }
-
-  // static handleErrors(response: Response): Promise<any> {
-  //   if (!response.ok) {
-  //     if (response.body) {
-  //       return response.json().then(body => {
-  //         return Promise.reject({ ...body, code: 900, text: body.message || 'An Unexpected Error Occurred' });
-  //       });
-  //     } else {
-  //       return Promise.reject(response);
-  //     }
-  //   }
-  //   return Promise.resolve(response);
-  // }
 }

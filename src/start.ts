@@ -1,8 +1,6 @@
 import { BrtCoreConfig } from '@bruit/types';
 import { Bruit } from './bruit';
 
-export { Bruit } from './bruit';
-
 
 if (document && document.getElementsByTagName) {
     // Find all script tags
@@ -19,6 +17,8 @@ if (document && document.getElementsByTagName) {
 
     if (scriptUnpkg) {
 
+        let loadBruitModal = true;
+        let modalConfig;
 
         // split our script
         var paramsStr = scriptUnpkg.split('?').pop();
@@ -55,11 +55,20 @@ if (document && document.getElementsByTagName) {
                             params.log.addQueryParamsToLog = true;
                         }
                         break;
+                    case 'noModal':
+                        if (kv[1] === 'true' || kv[1] === true) {
+                            loadBruitModal = false;
+                        }
+                        break;
+                    case 'modalConfig':
+                        modalConfig = JSON.parse(decodeURI(kv[1]));
+                        break;
                 }
             }
         }
 
 
-        Bruit.init(params);
+        Bruit.init(params, loadBruitModal, modalConfig);
+
     }
 }
